@@ -2,8 +2,11 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import Services from "../components/Services";
 import Featured from "../components/Featured";
+import { client } from "../lib/client";
+import Menu from "../components/Menu";
 
-export default function Home() {
+export default function Home({pizzas}) {
+  // console.log(pizzas);
   return (
     <Layout>
       <div>
@@ -14,6 +17,7 @@ export default function Home() {
         </Head>
         <Featured/>
         <Services/>
+        <Menu pizzas={pizzas}/>
         {/* body */}
        
        
@@ -24,5 +28,11 @@ export default function Home() {
 }
 
 export const getServerSideProps = async()=> {
-  
+  const query = '*[_type == "pizza"]';
+  const pizzas = await client.fetch(query);
+  return {
+    props: {
+      pizzas
+    }
+  }
 }

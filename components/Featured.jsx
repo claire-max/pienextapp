@@ -29,12 +29,12 @@ const Featured = () => {
       <div className={styles.wrapper} style={{transform:`translateX(${-100*index}vw)`}}>
         {images.map((img, i) => (
           <div className={styles.imgContainer} key={i}>
-            <Image src={img} alt="" objectFit="contain" layout="fill" />
+            <Image src={img} alt="" objectfit="contain" layout="fill" />
           </div>
         ))}
       </div>
       <div className={styles.arrowContainer} style={{ right: 0 }} onClick={()=>handleArrow("r")}>
-        <IoIosArrowForward size={50} layout="fill" alt="" objectFit="contain" />
+        <IoIosArrowForward size={50} layout="fill" alt="" objectfit="contain" />
       </div>
     </div>
   );
